@@ -30,7 +30,7 @@ const App = () => {
   // const [trendingErrorMessage, setTrendingErrorMessage] = useState("")
   // const [trendingLoading, setTrendingLoading] = useState(false);
 
-  useDebounce(() => setDebouncedSearchTerm(searchTerm), 500, [searchTerm]); //debounce the search term by 500ms
+  useDebounce(() => setDebouncedSearchTerm(searchTerm), 800, [searchTerm]); //debounce the search term by 500ms
 
   //when you're fetching something, typically it's a good practice to open up
   // a try-catch block
@@ -41,7 +41,7 @@ const App = () => {
 
     try {
       const endpoint = query
-        ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}`
+        ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}&include_adult=false`
         : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc&`; //this is the endpoint we're going to fetch
       const response = await fetch(endpoint, API_OPTIONS); // fetch is a function that makes a request to the server
 
